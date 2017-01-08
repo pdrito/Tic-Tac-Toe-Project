@@ -51,7 +51,7 @@ def game_move(player_number, player_marker):
         board_position = get_game_move(player_number)
     #Applies the user's marker to the position obtained
     row_indices = ['A', 'B', 'C']
-    col_indices = [1, 2, 3]
+    col_indices = ['1', '2', '3']
     row_index = row_indices.index(board_position[0])
     col_index = col_indices.index(board_position[1])
     board[row_index][col_index] = player_marker
@@ -124,4 +124,3 @@ def play_tictactoe():
                                     else:
                                         print 'No player has won. The game ends in a tie!'
 play_tictactoe()
-        
