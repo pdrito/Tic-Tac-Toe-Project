@@ -54,7 +54,7 @@ def game_move(player_number, player_marker):
     col_indices = ['1', '2', '3']
     row_index = row_indices.index(board_position[0])
     col_index = col_indices.index(board_position[1])
-    board[row_index][col_index] = player_marker
+    return row_index, col_index
     
 def get_game_move(player_number):
     '''Asks the user for a board position and makes sure the position is valid.
@@ -78,47 +78,64 @@ def play_tictactoe():
             ['B1', 'B2', 'B3'],
             ['C1', 'C2', 'C3']]
     print_board(board)
-    game_move("one", player1_marker)
+    row_index, col_index = game_move("one", player1_marker)
+    board[row_index][col_index] = player1_marker
     if check_board(board):
         print 'Game over!'
     else:
         print 'No player has won. The game continues.'
-        game_move('two', player2_marker)
+        print_board(board)
+        row_index, col_index = game_move("two", player2_marker)
+        board[row_index][col_index] = player2_marker
         if check_board(board):
             print 'Game over!'
         else:
             print 'No player has won. The game continues.'
-            game_move('one', player1_marker)
+            print_board(board)
+            row_index, col_index = game_move("one", player1_marker)
+            board[row_index][col_index] = player1_marker
             if check_board(board):
                 print 'Game over!'
             else:
                 print 'No player has won. The game continues.'
-                game_move('two', player2_marker)
+                print_board(board)
+                row_index, col_index = game_move('two', player2_marker)
+                board[row_index][col_index] = player2_marker
                 if check_board(board):
                     print 'Game over!'
                 else:
                     print 'No player has won. The game continues.'
-                    game_move('one', player1_marker)
+                    print_board(board)
+                    row_index, col_index = game_move('one', player1_marker)
+                    board[row_index][col_index] = player1_marker
                     if check_board(board):
                         print 'Game over!'
                     else:
                         print 'No player has won. The game continues.'
-                        game_move('two', player2_marker)
+                        print_board(board)
+                        row_index, col_index = game_move('two', player2_marker)
+                        board[row_index][col_index] = player2_marker
                         if check_board(board):
                             print 'Game over!'
                         else:
                             print 'No player has won. The game continues.'
-                            game_move('one', player1_marker)
+                            print_board(board)
+                            row_index, col_index = game_move('one', player1_marker)
+                            board[row_index][col_index] = player1_marker
                             if check_board(board):
                                 print 'Game over!'
                             else:
                                 print 'No player has won. The game continues.'
-                                game_move('two', player2_marker)
+                                print_board(board)
+                                row_index, col_index = game_move('two', player2_marker)
+                                board[row_index][col_index] = player2_marker
                                 if check_board(board):
                                     print 'Game over!'
                                 else:
                                     print 'No player has won. The game continues.'
-                                    game_move('one', player1_marker)
+                                    print_board(board)
+                                    row_index, col_index = game_move('one', player1_marker)
+                                    board[row_index][col_index] = player1_marker
                                     if check_board(board):
                                         print 'Game over!'
                                     else:
