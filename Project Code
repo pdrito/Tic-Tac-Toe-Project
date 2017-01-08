@@ -1,0 +1,125 @@
+def print_board(board):
+    '''
+    Displays a tic-tac-toe board to the user in the terminal.
+    
+    Args:
+        1: The list of board cells in row-major order 
+    '''
+    print board [0][0], '|', board[0][1], '|', board[0][2]
+    print '----------'
+    print board [1][0], '|', board[1][1], '|', board[1][2]
+    print '----------'
+    print board [2][0], '|', board[2][1], '|', board[2][2]
+
+def check_board(board):
+    '''
+    Checks if a player has marked three cells in a row.
+    
+    Returns: True or False'''
+    board[0][0] == board[0][1] == board[0][2] or board[1][0] == board[1][1] == board[1][2] or board[2][0] == board[2][1] == board[2][2] or board[0][0] == board[1][0] == board[2][0] or board[0][1] == board[1][1] == board[2][1] or board[0][2] == board[1][2] == board[2][2] or board[0][0] == board[1][1] == board[2][2] or board[0][2] == board[1][1] == board[2][0]
+
+def player_input():
+    '''
+    Asks the user to input the marker they want to be. Asks if they want to be X or O then assumes the second player takes the remaining marker.
+    
+    Returns: A tuple of the first and second players markers
+    '''
+    marker1 = raw_input('Player one, please indicate your marker for this game: ')
+    if marker1 is not 'X' and not 'x' and not 'O' and not 'o':
+        print 'Please input a valid marker.'
+        marker1 = raw_input('Please indicate either X or O: ')
+    elif marker1 == 'x' or marker1 == 'X':
+        print 'Okay, you will be X! Player two will be O.'
+        marker1 = 'X'
+        marker2 = 'O'
+    elif marker1 == 'o' or marker1 == 'O':
+        print 'Okay, you will be O! Player two will be X.'
+        marker1 = 'O'
+        marker2 = 'X'
+    return marker1, marker2
+
+def game_move(player_number, player_marker):
+    '''Asks the user for the place they would like to place their marker and then places it on the board.
+    
+    Args:
+        player_number: The string representation of the player number one or two. Will be used in the text displayed to the player.
+        player_marker: the marker the player chose to use to indicate their move on the board.
+    '''
+    #Get the board position from the user. Keep asking until we get a valid input.
+    board_position = None
+    while board_position is None:
+        board_position = get_game_move(player_number)
+    #Applies the user's marker to the position obtained
+    row_indices = ['A', 'B', 'C']
+    col_indices = [1, 2, 3]
+    row_index = row_indices.index(board_position[0])
+    col_index = col_indices.index(board_position[1])
+    board[row_index][col_index] = player_marker
+    
+def get_game_move(player_number):
+    '''Asks the user for a board position and makes sure the position is valid.
+    If the position is not valid, returns None.
+    
+    Returns: The board position (between A1-C3) provided by the user if valid, otherwise returns None
+    
+    Args:
+        player_number: The string representation of the players number one or two. Will be used in the text displayed to the player.
+    '''
+    board_position = raw_input("Player {}, please indicate your board position choice: ".format(player_number))
+    if board_position not in board[0:2][0:2]:
+        print 'Please input a valid placement.'
+        board_position = None
+    return board_position
+
+def play_tictactoe():
+    player1_marker, player2_marker = player_input()
+    board = [['A1', 'A2', 'A3'],
+            ['B1', 'B2', 'B3'],
+            ['C1', 'C2', 'C3']]
+    print_board(board)
+    game_move("one", player1_marker)
+    if check_board(board):
+        print 'Game over!'
+    else:
+        print 'No player has won. The game continues.'
+        game_move('two', player2_marker)
+        if check_board(board):
+            print 'Game over!'
+        else:
+            print 'No player has won. The game continues.'
+            game_move('one', player1_marker)
+            if check_board(board):
+                print 'Game over!'
+            else:
+                print 'No player has won. The game continues.'
+                game_move('two', player2_marker)
+                if check_board(board):
+                    print 'Game over!'
+                else:
+                    print 'No player has won. The game continues.'
+                    game_move('one', player1_marker)
+                    if check_board(board):
+                        print 'Game over!'
+                    else:
+                        print 'No player has won. The game continues.'
+                        game_move('two', player2_marker)
+                        if check_board(board):
+                            print 'Game over!'
+                        else:
+                            print 'No player has won. The game continues.'
+                            game_move('one', player1_marker)
+                            if check_board(board):
+                                print 'Game over!'
+                            else:
+                                print 'No player has won. The game continues.'
+                                game_move('two', player2_marker)
+                                if check_board(board):
+                                    print 'Game over!'
+                                else:
+                                    print 'No player has won. The game continues.'
+                                    game_move('one', player1_marker)
+                                    if check_board(board):
+                                        print 'Game over!'
+                                    else:
+                                        print 'No player has won. The game ends in a tie!'
+play_tictactoe()
