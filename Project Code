@@ -44,6 +44,7 @@ def game_move(player_number, player_marker, board):
     Args:
         player_number: The string representation of the player number one or two. Will be used in the text displayed to the player.
         player_marker: the marker the player chose to use to indicate their move on the board.
+        board: Current game board
     '''
     #Get the board position from the user. Keep asking until we get a valid input.
     board_position = None
@@ -64,6 +65,7 @@ def get_game_move(player_number, board):
     
     Args:
         player_number: The string representation of the players number one or two. Will be used in the text displayed to the player.
+        board: Current game board
     '''
     board_position = raw_input("Player {}, please indicate your board position choice: ".format(player_number))
     import itertools
@@ -106,4 +108,3 @@ def play_tictactoe():
                 turn = 'Player 1'
                         
 play_tictactoe()
-        
